@@ -37,9 +37,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .banknote-list {
-    margin-top: 20px;
-  }
-</style>
