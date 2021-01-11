@@ -19,7 +19,7 @@
           <b-form-input v-model="$v.query.$model" :state="!$v.query.$error" type="number" />
         </b-col>
         <b-col>
-          <b-button :disabled="$v.query.$error" variant="primary" @click="giveOutMoney">
+          <b-button id="giveOut" :disabled="$v.query.$error" variant="primary" @click="giveOutMoney">
             Give Out
           </b-button>
         </b-col>
