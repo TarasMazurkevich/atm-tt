@@ -63,18 +63,18 @@ export default {
           if (queryClone > 0 && currentBanknoteCountForQuery >= 1 && currentBanknote.count > 0) {
             if (currentBanknoteCountForQuery <= currentBanknote.count && vm.reduceMoney(queryClone, currentBanknote.nominal * currentBanknoteCountForQuery)) {
               queryClone -= currentBanknote.nominal * currentBanknoteCountForQuery
+              transactionUsedBanknotes.push({ nominal: currentBanknote.nominal, count: currentBanknoteCountForQuery })
               vm.$store.commit('SUBTRACT_BANKNOTES', {
                 selectedNominal: currentBanknote.nominal,
                 countToDescrease: currentBanknoteCountForQuery
               })
-              transactionUsedBanknotes.push({ nominal: currentBanknote.nominal, count: currentBanknoteCountForQuery })
             } else if (currentBanknoteCountForQuery > currentBanknote.count && vm.reduceMoney(queryClone, currentBanknote.nominal * currentBanknote.count)) {
               queryClone -= currentBanknote.nominal * currentBanknote.count
+              transactionUsedBanknotes.push({ nominal: currentBanknote.nominal, count: currentBanknote.count })
               vm.$store.commit('SUBTRACT_BANKNOTES', {
                 selectedNominal: currentBanknote.nominal,
                 countToDescrease: currentBanknote.count
               })
-              transactionUsedBanknotes.push({ nominal: currentBanknote.nominal, count: currentBanknote.count })
             } else {
               return false
             }
