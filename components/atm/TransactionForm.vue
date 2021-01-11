@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     giveOutMoney () {
-      if (this.matchQueryWithBalance() && this.checkBalance()) {
+      if (this.checkBalance() && this.matchQueryWithBalance()) {
         const vm = this
         let queryClone = this.query
         const transactionSum = queryClone
@@ -90,10 +90,28 @@ export default {
       return money - valueToDescrease >= 0
     },
     checkBalance () {
-      return this.BALANCE > 0
+      if (this.BALANCE > 0) {
+        return true
+      } else {
+        this.$bvToast.toast('The ATM no longer has funds!', {
+          title: 'ERROR !',
+          variant: 'danger',
+          solid: true
+        })
+        return false
+      }
     },
     matchQueryWithBalance () {
-      return this.BALANCE - this.query >= 0
+      if (this.BALANCE - this.query >= 0) {
+        return true
+      } else {
+        this.$bvToast.toast('The balance in the ATM is not enough to withdraw funds! Please enter a different amount!', {
+          title: 'ERROR !',
+          variant: 'danger',
+          solid: true
+        })
+        return false
+      }
     },
     validationMultipleOfTen (value) {
       return value % 10 === 0
