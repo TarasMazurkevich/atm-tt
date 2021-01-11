@@ -16,10 +16,10 @@
     <b-form-group>
       <b-row>
         <b-col>
-          <b-form-input v-model="query" type="number" />
+          <b-form-input v-model="$v.query.$model" :state="!$v.query.$error" type="number" />
         </b-col>
         <b-col>
-          <b-button variant="primary" @click="giveOutMoney">
+          <b-button :disabled="$v.query.$error" variant="primary" @click="giveOutMoney">
             Give Out
           </b-button>
         </b-col>
@@ -30,15 +30,30 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { required, minValue, maxValue } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
     query: 0
   }),
   computed: {
-    ...mapGetters(['BANKNOTES', 'DEFAULT_WITHDRAWAL_VARIANTS'])
+    ...mapGetters(['BANKNOTES', 'WITHDRAWAL_LIMIT', 'DEFAULT_WITHDRAWAL_VARIANTS'])
+  },
+  validations () {
+    const isMultipleOfTen = this.isMultipleOfTen
+    return {
+      query: {
+        required,
+        minValue: minValue(0),
+        maxValue: maxValue(this.WITHDRAWAL_LIMIT),
+        isMultipleOfTen
+      }
+    }
   },
   methods: {
-    giveOutMoney () {}
+    giveOutMoney () {},
+    isMultipleOfTen (value) {
+      return value % 10 === 0
+    }
   }
 }
 </script>
