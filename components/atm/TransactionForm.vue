@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit.prevent>
+  <b-form class="atm-form" @submit.prevent>
     <b-form-group>
       <b-form-radio-group>
         <b-form-radio
@@ -119,3 +119,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .atm-form {
+    margin-top: 20px;
+  }
+</style>

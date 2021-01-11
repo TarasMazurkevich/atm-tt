@@ -1,5 +1,5 @@
 <template>
-  <b-list-group>
+  <b-list-group class="banknote-list">
     <b-list-group-item
       v-for="(banknote, i) in BANKNOTES"
       :key="`atm-banknote-${i}`"
@@ -37,3 +37,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .banknote-list {
+    margin-top: 20px;
+  }
+</style>

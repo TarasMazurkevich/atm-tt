@@ -7,6 +7,7 @@
     fixed
     :items="tableItems"
     :fields="tableFields"
+    class="history"
   />
 </template>
 
@@ -33,3 +34,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .history {
+    margin-top: 20px;
+  }
+</style>
