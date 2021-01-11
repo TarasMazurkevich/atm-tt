@@ -29,7 +29,7 @@ const state = () => ({
 
 const getters = {
   BANKNOTES: (state) => {
-    return state.banknotes.sort((current, next) => current.nominal > next.nominal ? 1 : -1)
+    return state.banknotes
   }
 }
 
