@@ -6,6 +6,7 @@
 
 <style>
 html {
+  padding: 10px 0;
   font-family:
     'Source Sans Pro',
     -apple-system,
