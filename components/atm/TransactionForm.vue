@@ -83,7 +83,7 @@ export default {
           }
         })
 
-        this.$store.commit('ADD_TRANSACTION_TO_HISTORY', { result: transactionSum, banknotes: transactionUsedBanknotes })
+        this.$store.commit('ADD_TRANSACTION_TO_HISTORY', { sum: transactionSum, banknotes: transactionUsedBanknotes })
       }
     },
     reduceMoney (money, valueToDescrease) {
