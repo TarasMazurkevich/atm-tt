@@ -7,7 +7,7 @@ const getters = {
 }
 
 const mutations = {
-  ADD_CHECK_TO_TRANSACTION_HISTORY: (state, check) => {
+  ADD_TRANSACTION_TO_HISTORY: (state, check) => {
     state.transactionHistory.push(check)
   }
 }

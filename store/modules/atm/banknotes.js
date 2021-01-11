@@ -31,14 +31,17 @@ const getters = {
   BANKNOTES: (state) => {
     const banknotesClone = [...state.banknotes]
     return banknotesClone.sort((current, next) => current.nominal < next.nominal ? 1 : -1)
+  },
+  BALANCE: (state) => {
+    return state.banknotes.reduce((sum, current) => sum + (current.nominal * current.count), 0)
   }
 }
 
 const mutations = {
-  SUBTRACT_ONE_BANKNOTE: (state, nominal) => {
+  SUBTRACT_BANKNOTES: (state, { selectedNominal, countToDescrease }) => {
     state.banknotes.forEach((banknote, i) => {
-      if (banknote.nominal === nominal) {
-        --state.banknotes[i].count
+      if (banknote.nominal === selectedNominal) {
+        state.banknotes[i].count -= countToDescrease
       }
     })
   }
