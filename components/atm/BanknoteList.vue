@@ -1,7 +1,7 @@
 <template>
   <b-list-group>
     <b-list-group-item
-      v-for="(banknote, i) in sortedBanknotes"
+      v-for="(banknote, i) in BANKNOTES"
       :key="`atm-banknote-${i}`"
     >
       <b-row>
@@ -22,10 +22,6 @@
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    sortedBanknotes () {
-      const banknotesClone = [...this.BANKNOTES]
-      return banknotesClone.sort((current, next) => current.nominal < next.nominal ? 1 : -1)
-    },
     ...mapGetters(['BANKNOTES'])
   },
   methods: {

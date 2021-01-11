@@ -6,7 +6,8 @@ const state = () => ({
 const getters = {
   WITHDRAWAL_LIMIT: state => state.withdrawalLimit,
   DEFAULT_WITHDRAWAL_VARIANTS: (state) => {
-    return state.defaultWithdrawalVariants.sort((current, next) => current > next ? 1 : -1)
+    const variantsClone = [...state.defaultWithdrawalVariants]
+    return variantsClone.sort((current, next) => current < next ? 1 : -1)
   }
 }
 

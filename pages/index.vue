@@ -4,12 +4,9 @@
       <b-col>
         <atm-banknote-list />
       </b-col>
+      <b-col>
+        <atm-transaction-form />
+      </b-col>
     </b-row>
   </b-container>
 </template>
-
-<script>
-export default {}
-</script>
-
-<style></style>
